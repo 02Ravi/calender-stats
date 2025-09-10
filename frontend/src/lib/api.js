@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+const isProd = typeof window !== 'undefined' && window.location.hostname.endsWith('vercel.app');
 const API = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001',
+  baseURL: isProd ? '' : (import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001'),
   withCredentials: true,
 });
 
