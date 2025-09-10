@@ -1,0 +1,22 @@
+node_modules/
+.env
+.env.*
+
+# Build outputs
+/dist/
+/build/
+/.vite/
+/.cache/
+
+# Coverage
+/coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# OS & IDE
+.DS_Store
+.idea/
+.vscode/
