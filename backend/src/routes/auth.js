@@ -12,8 +12,13 @@ router.get('/google', (_req, res) => {
 
 router.get('/google/callback', async (req, res, next) => {
   try {
-    const code = req.query.code;
+    const { code, error, error_description } = req.query;
+    if (error) {
+      console.error('OAuth error:', error, error_description || '');
+      return res.status(400).json({ error: String(error), description: String(error_description || '') });
+    }
     if (!code) {
+      console.error('Callback missing code. URL was:', req.originalUrl);
       return res.status(400).json({ error: 'Missing code' });
     }
 
